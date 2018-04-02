@@ -1,0 +1,21 @@
+{
+  "main": "node_modules/expo/AppEntry.js",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "expo": "^25.0.0",
+    "npm": "^4.6.1",
+    "react": "16.2.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
+    "react-native-calendars": "^1.17.4",
+    "react-native-elements": "^1.0.0-beta3",
+    "react-native-keyboard-aware-scroll-view": "^0.5.0",
+    "react-native-material-dropdown": "^0.11.0",
+    "react-native-modal-dropdown": "^0.6.2",
+    "react-native-uploader": "0.0.10",
+    "react-navigation": "^1.5.2",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
+  }
+}
