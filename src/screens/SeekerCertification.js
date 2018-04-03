@@ -12,13 +12,10 @@ const {height, width} = Dimensions.get('window');
 const hearderHeight = 60;
 const itemWidth = '88%';
 const inputMarginTop = 40;
-const plusBtnMarginBottom = 40;
 const inputHeight = 30;
 const plusMediaBtnHeight = 45;
 const mediaHeight = 30;
 const mediaMarginV = 30;
-const plusCertBtnHeight = 30;
-const spacerViewHeight = height - ((inputMarginTop + inputHeight)*3 + mediaMarginV*2 + mediaHeight + plusMediaBtnHeight + plusBtnMarginBottom) - hearderHeight -20 ;
 
 const style = {
     button: {
@@ -47,7 +44,6 @@ const style = {
     input: {
         height:inputHeight,
         fontSize:20,
-        width:'itemWidth%',
         borderBottomWidth:1,
         borderBottomColor:'#D1D1D1',
         marginTop:inputMarginTop
@@ -266,9 +262,6 @@ class SeekerCertification extends Component {
 
     render() {
 
-        console.log('this.props.certification[0].uploadUri: ',this.props.certification[0].uploadUri);
-        console.log("this.props.certification[0].uploadUri ==='': ", this.props.certification[0].uploadUri === '');
-
         return (
 
             <KeyboardAwareScrollView
@@ -277,7 +270,7 @@ class SeekerCertification extends Component {
                 enableOnAndroid={true}
                 extraHeight={200}
             >
-                <View style={{}}>
+                <View style={{width:'100%', alignItems:'center'}}>
                     {this.renderCertificationList()}
                 </View>
                 <View style={{width:'100%'}}>

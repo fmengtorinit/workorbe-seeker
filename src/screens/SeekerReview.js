@@ -79,13 +79,6 @@ class SeekerReview extends Component {
 
     state = {
 
-        showSpec: false,
-        certQty:1,
-        certificationList:[{key:'cert1',name:'', authority:'', year:'', uri:''}],
-        specSelected:{},
-        isSpecSelectedDone:false,
-        numOfCertificationSelected:0
-
     };
 
     renderEditBtn = (screen ='',marginTop=30) => (
@@ -101,31 +94,18 @@ class SeekerReview extends Component {
     );
 
     renderProfile = profile => {
-
-        const {name,address,description,imageUri} = profile;
+        const {name,address,addressLine2,phone,description,uploadUri} = profile;
 
         return (
             <View style={{width:itemWidth, alignItems:'center',paddingHorizontal:'6%'}}>
 
-                {this.renderEditBtn('',0)}
+                {this.renderEditBtn('personalProfile',0)}
 
-                <View>
-                    <Image
-                        style={{height:100, width:110, borderWidth:1, borderColor:'red',marginTop:-30}}
-                        source={require('./image/new-logo.png')}
-                    />
-
-                    <Image
-                        style={{height:100, width:110, borderWidth:1, borderColor:'red', marginTop:-100}}
-                        source={require('./image/Hexagon_Frame.png')}
-                    />
-
-                </View>
-
-
+                {this.renderImage(uploadUri,'profile')}
 
                 <Text style={{...style.text,fontWeight:'bold',marginVertical:20}}>{name}</Text>
                 <Text style={style.text}>{address}</Text>
+                <Text style={style.text}>{addressLine2}</Text>
 
                 <Text style={{fontSize:20, color: 'black'}}> {description} </Text>
 
@@ -246,7 +226,7 @@ class SeekerReview extends Component {
                         <View style={{flexDirection:'row', alignItems:'center'}}>
 
                             <Image
-                                style={{height:23, width:13}}
+                                style={{height:18, width:10,marginRight:3}}
                                 source={require('./image/Dollar.png')}
                             />
 
@@ -303,10 +283,10 @@ class SeekerReview extends Component {
             if (name || authority || year || uploadUri) {
 
                 return (
-                        <View key={name} style={{marginBottom:20}}>
+                        <View key={name} style={{marginBottom:20,alignItems:'flex-start'}}>
                             <Text style={{...style.text,fontWeight:'bold',marginBottom:5}}>{name}</Text>
-                            <Text style={style.text}> {authority} </Text>
-                            <Text style={style.text}> {year} </Text>
+                            <Text style={style.text}>{authority}</Text>
+                            <Text style={style.text}>{year}</Text>
                             {this.renderImage(uploadUri,'',{alignSelf:'center'})}
 
                         </View>
@@ -361,15 +341,15 @@ class SeekerReview extends Component {
             return (
                 <View
                     key={index}
-                    style={style}
+                    style={{alignItems:'center',...style}}
                 >
                     <Image
-                        style={{height:100, width:110}}
+                        style={{height:100, width:120,zIndex:-1}}
                         source={{uri}}
                     />
 
                     <Image
-                        style={{height:100, width:110}}
+                        style={{height:104, width:120,marginTop:-102,zIndex:10}}
                         source={require('./image/Hexagon_Frame.png')}
                     />
 
@@ -414,12 +394,7 @@ class SeekerReview extends Component {
                 extraHeight={200}
             >
 
-                {this.renderProfile({
-                    name:"John Van Eck",
-                    address:"350 Adelaide St, Toronto, ON, M5V1R7",
-                    description:"asdadsfaasf asdsfadsdfafs asdfasfasfsa asdfasfsfasf asfsadffasfsa asdsfasfsdafadsfsaf asdfasfsafsdfaf asdsfasfadfsafa  asdfasfsafasfs assdfsafdsfasfas"
-
-                })}
+                {this.renderProfile(this.props.userProfile)}
 
                 {this.renderAvailability({
                     dates:'safasfsf'
@@ -443,7 +418,7 @@ class SeekerReview extends Component {
                     <Button
                         title="Start Now"
                         titleStyle={style.buttonText}
-                        onPress={() => this.props.navigation.navigate('seekerMap')}
+                        onPress={() => this.props.navigation.navigate('creditCardInfo')}
                         buttonStyle={style.button}
                         uncheckedColor=""
                         containerStyle={{ width: '88%', alignSelf:'center', zIndex:20}}
@@ -505,12 +480,13 @@ async function uploadImageAsync(uri) {
 const mapStateToProps = state => {
     return {
         media:state.onBoarding.media,
-        creditCard:state.onBoarding.media,
+        creditCard:state.onBoarding.creditCard,
         certification:state.seekerOnBoarding.certification,
         capability:state.seekerOnBoarding.capability,
         experience:state.seekerOnBoarding.experience,
         insurance:state.seekerOnBoarding.insurance,
-        union:state.seekerOnBoarding.union
+        union:state.seekerOnBoarding.union,
+        userProfile:state.onBoarding.userProfile
     };
 };
 

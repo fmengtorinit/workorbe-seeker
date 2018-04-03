@@ -3,6 +3,8 @@ import React from 'react';
 const initialState = {
     media:[],
     creditCard:{name:'',cardNumber:'',expMM:'',expYY:'',cvv:'',billingAddress:'',country:'Country',state:'State',city:'', postalCode:''},
+    userType:'seeker',
+    userProfile:{name:'Feida Meng',address:'',addressLine2:'',phone:'',description:'',uploadUri:''}
 };
 
 const OnBoardingReducer = (state = initialState, action) => {
@@ -18,6 +20,10 @@ const OnBoardingReducer = (state = initialState, action) => {
             }
         case 'creditCardInputChange':
             return {...state, creditCard:{ ...state.creditCard, ...action.payload }};
+        case 'userTypeSelected':
+            return {...state, userType:action.payload};
+        case 'userProfileChange':
+            return {...state, userProfile:{ ...state.userProfile, ...action.payload}};
         default:
             return state;
     }

@@ -14,6 +14,10 @@ import SeekerCertification from "./src/screens/SeekerCertification";
 import SeekerInsuranceUnion from "./src/screens/SeekerInsuranceUnion";
 import SeekerReview from "./src/screens/SeekerReview";
 import ProviderProfile from "./src/screens/Provider/ProviderProfile";
+import PersonalProfile from "./src/screens/PersonalProfile";
+import ProviderCompanyProfile from "./src/screens/Provider/ProviderCompanyProfile";
+import ProviderSignUp from "./src/screens/Provider/ProviderSignUpForm";
+
 
 export default class App extends Component {
 
@@ -29,14 +33,16 @@ export default class App extends Component {
 
     const MainNavigator = StackNavigator({
 
+        personalProfile: {screen: PersonalProfile},
+        ProviderCompanyProfile:{screen: ProviderCompanyProfile},
         providerProfile: {screen: ProviderProfile},
+        providerSignUp:{screen:ProviderSignUp},
         creditCardInfo: { screen: CreditCardInfo },
         media:{ screen: Media },
         seekerCapability: { screen: SeekerCapability },
         seekerCertification: {screen: SeekerCertification},
         seekerInsuranceUnion: {screen: SeekerInsuranceUnion},
-        seekerReview: {screen: SeekerReview},
-        // seekerMap: {screen: Map},
+        seekerReview: {screen: SeekerReview}
 
     });
 

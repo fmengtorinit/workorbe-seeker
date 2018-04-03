@@ -11,3 +11,14 @@ export const onCreditCardInputChange = input => {
     return {type:'creditCardInputChange', payload: input}
 };
 
+export const onUserTypeSelected = input => {
+    console.log('onCreditCardInputChange:',input);
+
+    return {type:'userTypeSelected', payload: input}
+};
+
+export const onUserProfileChange = input => {
+    console.log('onCreditCardInputChange:',input);
+
+    return {type:'userProfileChange', payload: input}
+};

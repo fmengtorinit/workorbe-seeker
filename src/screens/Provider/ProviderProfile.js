@@ -185,26 +185,27 @@ class ProviderProfile extends Component {
             if (raterName || rating || date || comment || profileImageUrl) {
                 return (
                     <View key={'review'+index} style={{width:'88%'}}>
-                        <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+                        <View style={{flexDirection:'row', alignItems:'flex-start', justifyContent:'space-between'}}>
 
-                            {this.renderImage(profileImageUrl,index,{borderWidth:1, borderColor:'red', margin:0, height:100, width:profileImageWidth})}
+                            <View style={{flexDirection:'row', justifyContent:'flex-start'}}>
+                                {this.renderImage(profileImageUrl,index,{borderWidth:1, borderColor:'red', margin:0, height:100, width:profileImageWidth})}
 
-                            <View style={{width: (width - profileImageWidth -20)}}>
-                                <View style={{flexDirection:'row', alignItems:'center',justifyContent:'space-between'}}>
+                                <View style={{alignItems:'flex-start'}}>
                                     <Text style={style.text}>{raterName}</Text>
-                                    <Text style={style.text}>{date}</Text>
+                                    <View style={{flexDirection:'row'}}>
+                                        <Image
+                                            style={{height:23, width:23, marginRight:10}}
+                                            source={require('../image/Star.png')}
+                                        />
+
+                                        <Text style={{...style.text}}>{rating}/5</Text>
+                                    </View>
                                 </View>
 
-                                <View style={{flexDirection:'row'}}>
-                                    <Image
-                                        style={{height:23, width:23, marginRight:10}}
-                                        source={require('../image/Star.png')}
-                                    />
-
-                                    <Text style={{...style.text}}>{rating}/5</Text>
-
-                                </View>
                             </View>
+
+                            <Text style={style.text}>{date}</Text>
+
 
                         </View>
                     </View>

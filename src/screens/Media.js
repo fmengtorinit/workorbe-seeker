@@ -38,7 +38,8 @@ const style = {
         backgroundColor:"white",
         alignItems:'center',
         width: '100%',
-        height: '100%'
+        height: '100%',
+        justifyContent:'space-between'
     },
     parentView2:{
         backgroundColor:"white",
@@ -65,9 +66,8 @@ const style = {
         height:hearderHeight,
     },
     footer: {
-        position:'absolute',
+        width:'100%',
         bottom:0,
-        width:'100%'
     },
     // footer2: {
     //     width:'100%'
@@ -88,7 +88,7 @@ class Media extends Component {
 
         headerRight: (
 
-            <TouchableOpacity style={{backgroundColor: 'transparent'}} onPress={()=> navigation.navigate('seekerSignupCapability')}>
+            <TouchableOpacity style={{backgroundColor: 'transparent'}} onPress={()=> navigation.navigate('seekerCertification')}>
                 <Text style={{color:'#3C5A99',fontWeight:'bold',fontSize:20}}>Skip</Text>
             </TouchableOpacity>
         ),
@@ -186,13 +186,14 @@ class Media extends Component {
                 contentContainerStyle={ this.props.media.length > 1 ? style.parentView2 : style.parentView1 }
                 enableOnAndroid
             >
+                <View style={{width:'100%',alignItems:'center'}}>
+                    <Text style={{width:'88%',fontSize:19, marginBottom: 30,marginTop:60, textAlign:'center'}}>Showcase your completed projects here.</Text>
 
-                <Text style={{width:'88%',fontSize:19, marginBottom: 30,marginTop:60, textAlign:'center'}}>Showcase your completed projects here.</Text>
+                    {this.renderAddMediaBtn()}
 
-                {this.renderAddMediaBtn()}
-
-                <View style={{width:'100%', alignItems:'center', marginBottom:180}}>
-                    {this.renderImageList()}
+                    <View style={{width:'100%', alignItems:'center'}}>
+                        {this.renderImageList()}
+                    </View>
                 </View>
 
                 <View style={style.footer}>
@@ -201,7 +202,7 @@ class Media extends Component {
                         title="Continue"
                         titleStyle={style.buttonText}
                         buttonStyle={style.button}
-                        onPress={() => this.props.navigation.navigate('seekerCapability')}
+                        onPress={() => this.props.navigation.navigate('seekerCertification')}
                         uncheckedColor=""
                         containerStyle={{ width: '100%', alignSelf:'center', zIndex:20}}
                     />

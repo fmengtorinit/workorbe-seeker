@@ -268,7 +268,7 @@ class SeekerCapability extends Component {
                 <Text style={{fontSize:18,fontWeight: 'bold', width:'100%',marginBottom:20}}>Description</Text>
 
                 <TextInput
-                    style={{width:'100%', height:100, borderWidth:1, borderColor:'#D1D1D1', marginBottom: 20}}
+                    style={{textAlignVertical: "top", fontSize:18,width:'100%', height:100, borderWidth:1, borderColor:'#D1D1D1', marginBottom: 20}}
                     underlineColorAndroid='rgba(0,0,0,0)'
                     multiline
                     value={description}
@@ -583,7 +583,7 @@ class SeekerCapability extends Component {
                 <Button
                     title="Continue"
                     titleStyle={style.buttonText}
-                    onPress={() => this.props.navigation.navigate('seekerCertification')}
+                    onPress={() => this.props.navigation.navigate('media')}
                     buttonStyle={style.button}
                     uncheckedColor=""
                     containerStyle={{ width: '100%', marginTop:50, marginBottom:65 }}

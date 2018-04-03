@@ -138,6 +138,25 @@ class InsuranceUnion extends Component {
         }
     };
 
+    renderMediaBtn = type => {
+
+        if (!this.props[type].uploadUri) {
+
+            return (
+
+                <TouchableOpacity
+                    style={{width:'100%', marginBottom:20}}
+                    onPress={() => this._pickImage(type)}
+                >
+                    <Image
+                        style={{height:45, width:53, alignSelf:'flex-start'}}
+                        source={require('./image/Add_Pentagon.jpg')}
+                    />
+                </TouchableOpacity>
+            );
+        }
+    };
+
     render() {
 
         return (
@@ -161,15 +180,7 @@ class InsuranceUnion extends Component {
 
                     <Text key="insurance" style={{...style.text,alignSelf:'flex-start', marginBottom:20}}>Media</Text>
 
-                    <TouchableOpacity
-                        style={{width:'100%', marginBottom:20}}
-                        onPress={() => this._pickImage('insurance')}
-                    >
-                        <Image
-                            style={{height:45, width:53, alignSelf:'flex-start'}}
-                            source={require('./image/Add_Pentagon.jpg')}
-                        />
-                    </TouchableOpacity>
+                    {this.renderMediaBtn('insurance')}
                     {this.renderUpload('insurance')}
                 </View>
 
@@ -198,16 +209,7 @@ class InsuranceUnion extends Component {
 
                     <Text key="union" style={{...style.text,alignSelf:'flex-start', marginBottom:20}}>Media</Text>
 
-                    <TouchableOpacity
-                        style={{width:'100%', marginBottom:40}}
-                        onPress={() => this._pickImage('union')}
-                    >
-                        <Image
-                            style={{height:45, width:53, alignSelf:'flex-start'}}
-                            source={require('./image/Add_Pentagon.jpg')}
-                        />
-                    </TouchableOpacity>
-
+                    {this.renderMediaBtn('union')}
                     {this.renderUpload('union')}
 
                 </View>

@@ -74,7 +74,7 @@ const style = {
     },
     footer: {
         position:'absolute',
-        bottom:29,
+        bottom:20,
         width:'100%'
     }
 };
@@ -231,157 +231,159 @@ class CreditCardInfo extends Component {
                     source={require('./image/new-logo.png')}
                 />
 
-                <TextInput
-                    placeholder="Name on Card"
-                    style={style.input}
-                    placeholderTextColor={'#D1D1D1'}
-                    underlineColorAndroid='rgba(0,0,0,0)'
-                    value={this.props.creditCard.name}
-                    onChangeText={text => this.onNameOnCardChange(text)}
-                />
-
-                <View style={style.cardView}>
-                    <Image
-                        style={{width:20, height:15, marginBottom:3, marginRight:6}}
-                        source={require('./image/creditcard_icon.jpg')}
-                    />
+                <View style={{width:'100%',alignItems:'center'}}>
 
                     <TextInput
-                        placeholder="Card Number"
-                        style={{...style.input,borderBottomWidth:0, marginBottom:3}}
-                        keyboardType='numeric'
+                        placeholder="Name on Card"
+                        style={style.input}
                         placeholderTextColor={'#D1D1D1'}
                         underlineColorAndroid='rgba(0,0,0,0)'
-                        maxLength={19}
-                        value={this.props.creditCard.cardNumber}
-                        onChangeText={input => this.onNameOnCardNumberChange(input)}
+                        value={this.props.creditCard.name}
+                        onChangeText={text => this.onNameOnCardChange(text)}
                     />
-                </View>
 
-                <View style={{flexDirection:'row',width:'88%',justifyContent:'space-between'}}>
-
-                    <View style={{flexDirection:'row',justifyContent:'flex-start', width: '45%', alignItems:'center',borderBottomWidth:1, borderBottomColor:'#D1D1D1', marginBottom:35}}>
-                        <TextInput
-                            placeholder="Exp.MM"
-                            keyboardType='numeric'
-                            style={{...style.input,width:(this.props.creditCard.expMM ? 27 : '45%'),borderBottomWidth:0, marginBottom:1,marginRight:0}}
-                            placeholderTextColor={'#D1D1D1'}
-                            underlineColorAndroid='rgba(0,0,0,0)'
-                            value={this.props.creditCard.expMM}
-                            maxLength={2}
-                            onChangeText={input => this.onExpMonthChange(input)}
-                        />
-
-                        <Text style={{...style.input,color:'#D1D1D1',width:'5%',borderBottomWidth:0,marginBottom:1,marginRight:5}}>
-                            /
-                        </Text>
-
-                        <TextInput
-                            placeholder="YY"
-                            style={{...style.input, marginLeft:0, width:'46%',borderBottomWidth:0, marginBottom:1}}
-                            placeholderTextColor={'#D1D1D1'}
-                            keyboardType='numeric'
-                            underlineColorAndroid='rgba(0,0,0,0)'
-                            value={this.props.creditCard.expYY}
-                            maxLength={2}
-                            onChangeText={input => this.onExpYearChange(input)}
-                        />
-                    </View>
-
-                    <View style={{flexDirection:'row',justifyContent:'flex-start', width: '45%', alignItems:'center',borderBottomWidth:1, borderBottomColor:'#D1D1D1', marginBottom:35}}>
-
-                        <TextInput
-                            placeholder="CVV"
-                            keyboardType='numeric'
-                            style={{...style.input,borderBottomWidth:0, width: '85%',marginBottom:1}}
-                            placeholderTextColor={'#D1D1D1'}
-                            underlineColorAndroid='rgba(0,0,0,0)'
-                            value={this.props.creditCard.cvv}
-                            maxLength={3}
-                            onChangeText={input => this.onCVVChange(input)}
-                        />
-
+                    <View style={style.cardView}>
                         <Image
-                            style={{width:18, height:16, marginBottom:2}}
-                            source={require('./image/pentagon_questionmark.jpg')}
+                            style={{width:20, height:15, marginBottom:3, marginRight:6}}
+                            source={require('./image/creditcard_icon.jpg')}
+                        />
+
+                        <TextInput
+                            placeholder="Card Number"
+                            style={{...style.input,borderBottomWidth:0, marginBottom:3}}
+                            keyboardType='numeric'
+                            placeholderTextColor={'#D1D1D1'}
+                            underlineColorAndroid='rgba(0,0,0,0)'
+                            maxLength={19}
+                            value={this.props.creditCard.cardNumber}
+                            onChangeText={input => this.onNameOnCardNumberChange(input)}
+                        />
+                    </View>
+
+                    <View style={{flexDirection:'row',width:'88%',justifyContent:'space-between'}}>
+
+                        <View style={{flexDirection:'row',justifyContent:'flex-start', width: '45%', alignItems:'center',borderBottomWidth:1, borderBottomColor:'#D1D1D1', marginBottom:35}}>
+                            <TextInput
+                                placeholder="Exp.MM"
+                                keyboardType='numeric'
+                                style={{...style.input,width:(this.props.creditCard.expMM ? 27 : '45%'),borderBottomWidth:0, marginBottom:1,marginRight:0}}
+                                placeholderTextColor={'#D1D1D1'}
+                                underlineColorAndroid='rgba(0,0,0,0)'
+                                value={this.props.creditCard.expMM}
+                                maxLength={2}
+                                onChangeText={input => this.onExpMonthChange(input)}
+                            />
+
+                            <Text style={{...style.input,color:'#D1D1D1',width:'5%',borderBottomWidth:0,marginBottom:1,marginRight:5}}>
+                                /
+                            </Text>
+
+                            <TextInput
+                                placeholder="YY"
+                                style={{...style.input, marginLeft:0, width:'46%',borderBottomWidth:0, marginBottom:1}}
+                                placeholderTextColor={'#D1D1D1'}
+                                keyboardType='numeric'
+                                underlineColorAndroid='rgba(0,0,0,0)'
+                                value={this.props.creditCard.expYY}
+                                maxLength={2}
+                                onChangeText={input => this.onExpYearChange(input)}
+                            />
+                        </View>
+
+                        <View style={{flexDirection:'row',justifyContent:'flex-start', width: '45%', alignItems:'center',borderBottomWidth:1, borderBottomColor:'#D1D1D1', marginBottom:35}}>
+
+                            <TextInput
+                                placeholder="CVV"
+                                keyboardType='numeric'
+                                style={{...style.input,borderBottomWidth:0, width: '85%',marginBottom:1}}
+                                placeholderTextColor={'#D1D1D1'}
+                                underlineColorAndroid='rgba(0,0,0,0)'
+                                value={this.props.creditCard.cvv}
+                                maxLength={3}
+                                onChangeText={input => this.onCVVChange(input)}
+                            />
+
+                            <Image
+                                style={{width:18, height:16, marginBottom:2}}
+                                source={require('./image/pentagon_questionmark.jpg')}
+                            />
+                        </View>
+                    </View>
+
+                    <TextInput
+                        placeholder="Billing Address"
+                        style={style.input}
+                        placeholderTextColor={'#D1D1D1'}
+                        underlineColorAndroid='rgba(0,0,0,0)'
+                        value={this.props.creditCard.billingAddress}
+                        onChangeText={input => this.onBillingAddressChange(input)}
+                    />
+
+                    <View style={{flexDirection:'row',width:'88%',justifyContent:'space-between'}}>
+
+                        <ModalDropdown
+                            options={this.state.countryList}
+                            defaultValue={"Country"}
+                            style={{...style.dropDown, width:'50%'}}
+                            dropdownTextStyle={{...style.text, fontWeight:'normal'}}
+                            dropdownStyle={{width:'50%'}}
+                            textStyle={{...style.text,color:'#D1D1D1',fontWeight:'normal'}}
+                            onSelect={(index, country) => this.onCountrySelect(country)}
+                            showsVerticalScrollIndicator={true}
+                        >
+                            <View style={{flexDirection:'row',width:'100%',justifyContent:'space-between', alignItems:'center'}}>
+                                <Text style={{fontSize:18,color:(this.props.creditCard.country ==='Country' ? '#D1D1D1' : 'black')}}>{this.props.creditCard.country}</Text>
+                                <Image
+                                    style={{height:13, width:28}}
+                                    source={require('./image/dropdown_pg5.jpg')}
+                                />
+                            </View>
+
+                        </ModalDropdown>
+
+                        <ModalDropdown
+                            options={this.state.stateList[this.props.creditCard.country]}
+                            defaultValue={"State"}
+                            disabled={ (this.props.creditCard.country === 'Country' || this.state.stateList[this.props.creditCard.country].length === 0)? true : false}
+                            style={{...style.dropDown, width:'40%'}}
+                            dropdownTextStyle={{...style.text, fontWeight:'normal'}}
+                            dropdownStyle={{width:'40%'}}
+                            textStyle={{...style.text,color:'#D1D1D1',fontWeight:'normal'}}
+                            onSelect={(index, state) => this.onStateSelect(state)}
+                            showsVerticalScrollIndicator={true}
+                        >
+                            <View style={{flexDirection:'row',width:'100%',justifyContent:'space-between', alignItems:'center'}}>
+                                <Text style={{fontSize:18,color:(this.props.creditCard.state === 'State' ? '#D1D1D1' : 'black')}}>{this.props.creditCard.state}</Text>
+                                <Image
+                                    style={{height:13, width:28}}
+                                    source={require('./image/dropdown_pg5.jpg')}
+                                />
+                            </View>
+
+                        </ModalDropdown>
+
+                    </View>
+
+                    <View style={{flexDirection:'row',width:'88%',justifyContent:'space-between'}}>
+                        <TextInput
+                            placeholder="City"
+                            style={{...style.input,width:'50%'}}
+                            placeholderTextColor={'#D1D1D1'}
+                            underlineColorAndroid='rgba(0,0,0,0)'
+                            value={this.props.creditCard.city}
+                            onChangeText={input => this.onCityChange(input)}
+                        />
+
+                        <TextInput
+                            placeholder="Postal Code"
+                            style={{...style.input,width:'40%'}}
+                            placeholderTextColor={'#D1D1D1'}
+                            underlineColorAndroid='rgba(0,0,0,0)'
+                            value={this.props.creditCard.postalCode}
+                            onChangeText={input => this.onPostalCodeChange(input)}
                         />
                     </View>
                 </View>
-
-                <TextInput
-                    placeholder="Billing Address"
-                    style={style.input}
-                    placeholderTextColor={'#D1D1D1'}
-                    underlineColorAndroid='rgba(0,0,0,0)'
-                    value={this.props.creditCard.billingAddress}
-                    onChangeText={input => this.onBillingAddressChange(input)}
-                />
-
-                <View style={{flexDirection:'row',width:'88%',justifyContent:'space-between'}}>
-
-                    <ModalDropdown
-                        options={this.state.countryList}
-                        defaultValue={"Country"}
-                        style={{...style.dropDown, width:'50%'}}
-                        dropdownTextStyle={{...style.text, fontWeight:'normal'}}
-                        dropdownStyle={{width:'50%'}}
-                        textStyle={{...style.text,color:'#D1D1D1',fontWeight:'normal'}}
-                        onSelect={(index, country) => this.onCountrySelect(country)}
-                        showsVerticalScrollIndicator={true}
-                    >
-                        <View style={{flexDirection:'row',width:'100%',justifyContent:'space-between', alignItems:'center'}}>
-                            <Text style={{fontSize:18,color:(this.props.creditCard.country ==='Country' ? '#D1D1D1' : 'black')}}>{this.props.creditCard.country}</Text>
-                            <Image
-                                style={{height:13, width:28}}
-                                source={require('./image/dropdown_pg5.jpg')}
-                            />
-                        </View>
-
-                    </ModalDropdown>
-
-                    <ModalDropdown
-                        options={this.state.stateList[this.props.creditCard.country]}
-                        defaultValue={"State"}
-                        disabled={ (this.props.creditCard.country === 'Country' || this.state.stateList[this.props.creditCard.country].length === 0)? true : false}
-                        style={{...style.dropDown, width:'40%'}}
-                        dropdownTextStyle={{...style.text, fontWeight:'normal'}}
-                        dropdownStyle={{width:'40%'}}
-                        textStyle={{...style.text,color:'#D1D1D1',fontWeight:'normal'}}
-                        onSelect={(index, state) => this.onStateSelect(state)}
-                        showsVerticalScrollIndicator={true}
-                    >
-                        <View style={{flexDirection:'row',width:'100%',justifyContent:'space-between', alignItems:'center'}}>
-                            <Text style={{fontSize:18,color:(this.props.creditCard.state === 'State' ? '#D1D1D1' : 'black')}}>{this.props.creditCard.state}</Text>
-                            <Image
-                                style={{height:13, width:28}}
-                                source={require('./image/dropdown_pg5.jpg')}
-                            />
-                        </View>
-
-                    </ModalDropdown>
-
-                </View>
-
-                <View style={{flexDirection:'row',width:'88%',justifyContent:'space-between'}}>
-                    <TextInput
-                        placeholder="City"
-                        style={{...style.input,width:'50%'}}
-                        placeholderTextColor={'#D1D1D1'}
-                        underlineColorAndroid='rgba(0,0,0,0)'
-                        value={this.props.creditCard.city}
-                        onChangeText={input => this.onCityChange(input)}
-                    />
-
-                    <TextInput
-                        placeholder="Postal Code"
-                        style={{...style.input,width:'40%'}}
-                        placeholderTextColor={'#D1D1D1'}
-                        underlineColorAndroid='rgba(0,0,0,0)'
-                        value={this.props.creditCard.postalCode}
-                        onChangeText={input => this.onPostalCodeChange(input)}
-                    />
-                </View>
-
 
                 <View style={style.footer}>
 
@@ -389,7 +391,7 @@ class CreditCardInfo extends Component {
                         title="Continue"
                         titleStyle={style.buttonText}
                         buttonStyle={style.button}
-                        onPress={() => this.props.navigation.navigate('seekerCapability')}
+                        onPress={() => this.props.navigation.navigate('ProviderCompanyProfile')}
                         uncheckedColor=""
                         containerStyle={{ width: '100%', alignSelf:'center', zIndex:20}}
                     />
@@ -407,9 +409,6 @@ class CreditCardInfo extends Component {
                     </View>
 
                 </View>
-
-
-
             </KeyboardAvoidingView>
 
         );
