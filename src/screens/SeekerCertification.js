@@ -266,7 +266,7 @@ class SeekerCertification extends Component {
 
             <KeyboardAwareScrollView
 
-                contentContainerStyle={ (Object.keys(this.props.certification).length === 1 || this.props.certification[0].uploadUri === '' ? style.parentView1 : style.parentView2)}
+                contentContainerStyle={ (Object.keys(this.props.certification).length === 1 && this.props.certification[0].uploadUri === '' ? style.parentView1 : style.parentView2)}
                 enableOnAndroid={true}
                 extraHeight={200}
             >

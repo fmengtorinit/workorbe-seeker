@@ -69,10 +69,6 @@ const style = {
         width:'100%',
         bottom:0,
     },
-    // footer2: {
-    //     width:'100%'
-    // }
-
 };
 
 
@@ -156,7 +152,6 @@ class Media extends Component {
                             source={{uri:uploadUri}}
                         />
                     </TouchableOpacity>
-
                 )
             );
         }
@@ -222,7 +217,6 @@ class Media extends Component {
                 </View>
 
             </KeyboardAwareScrollView>
-
         );
     }
 }

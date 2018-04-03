@@ -284,11 +284,10 @@ class SeekerReview extends Component {
 
                 return (
                         <View key={name} style={{marginBottom:20,alignItems:'flex-start'}}>
-                            <Text style={{...style.text,fontWeight:'bold',marginBottom:5}}>{name}</Text>
-                            <Text style={style.text}>{authority}</Text>
-                            <Text style={style.text}>{year}</Text>
-                            {this.renderImage(uploadUri,'',{alignSelf:'center'})}
-
+                            {name ? (<Text style={{...style.text,fontWeight:'bold',marginTop:30, marginBottom:5, color:'#426E86'}}>{name}</Text>) : null}
+                            {authority ? (<Text style={style.text}>{authority}</Text>) : null}
+                            {year ? (<Text style={style.text}>{year}</Text>) : null}
+                            {this.renderImage(uploadUri,'',{marginTop:10})}
                         </View>
                 );
             }
@@ -320,6 +319,7 @@ class SeekerReview extends Component {
             <View style={{width:itemWidth, alignItems:'center',borderTopWidth:1, borderTopColor:'#D1D1D1',borderStyle:'dotted',marginBottom:30}}>
 
                 <View style={{width:'88%',alignItems:'flex-start'}}>
+
                     <Text style={{...style.text,fontWeight:'bold',marginTop:30,alignSelf:'center'}}>Insurance</Text>
 
                     {this.renderEditBtn('seekerInsuranceUnion',-30)}
@@ -329,9 +329,7 @@ class SeekerReview extends Component {
                     {this.renderImage(uploadUri,'insurance',{marginTop:20})}
 
                 </View>
-
             </View>
-
         );
     };
 
@@ -371,7 +369,7 @@ class SeekerReview extends Component {
                     {this.renderEditBtn('seekerInsuranceUnion',-30)}
 
                     <Text style={{...style.text, fontWeight:'bold', color:'#426E86',width:'88%',marginTop: (name ? 30 : 0)}}>{name}</Text>
-                    <Text style={{...style.text, fontWeight:'bold', color:'black',width:'88%',marginTop: (number ? 30 : 0)}}>{number}</Text>
+                    <Text style={{...style.text, fontWeight:'bold', color:'black',width:'88%',marginTop: (number ? 10 : 0)}}>{number}</Text>
 
                     {uploadUri ? this.renderImage(uploadUri, 'union',{marginTop:20}) : null}
 
