@@ -241,7 +241,6 @@ class SeekerCertification extends Component {
                     >
                         Add Certification
                     </Text>
-
                 </View>
             );
         } else {

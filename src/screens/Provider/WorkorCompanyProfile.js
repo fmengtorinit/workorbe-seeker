@@ -102,87 +102,87 @@ class ProviderSignUp extends Component {
         headerStyle:style.header
     });
 
-  render(){
-    return (
-        <KeyboardAwareScrollView
-            contentContainerStyle={{
-                backgroundColor: 'white',
-                width: '100%',
-                alignItems:'center',
-                height:height,
-                justifyContent:'space-between',
-                zIndex:10
+    render(){
+        return (
+            <KeyboardAwareScrollView
+                contentContainerStyle={{
+                    backgroundColor: 'white',
+                    width: '100%',
+                    alignItems:'center',
+                    height:height,
+                    justifyContent:'space-between',
+                    zIndex:10
 
-            }}
-            enableOnAndroid
-        >
-            <Image
-                source={{uri: 'https://torinit.com/assets/workorbe/Blue-Hexagon-Top.png'}}
-                style={style.imageTopRightStyle}
-            />
-            <Image
-                source={{uri: 'https://torinit.com/assets/workorbe/New-Logo.png'}}
-                style={{width:'85%',height:46, marginBottom:50, marginTop:hearderHeight+25}}
-            />
-
-            <View style={{width:'100%', alignItems:'center'}}>
-
-                <TextInput
-                    placeholder="Name"
-                    style={style.input}
-                    placeholderTextColor={'#D1D1D1'}
-                    underlineColorAndroid='rgba(0,0,0,0)'
-
+                }}
+                enableOnAndroid
+            >
+                <Image
+                    source={{uri: 'https://torinit.com/assets/workorbe/Blue-Hexagon-Top.png'}}
+                    style={style.imageTopRightStyle}
+                />
+                <Image
+                    source={{uri: 'https://torinit.com/assets/workorbe/New-Logo.png'}}
+                    style={{width:'85%',height:46, marginBottom:50, marginTop:hearderHeight+25}}
                 />
 
-                <Text style={style.text}>{'Aecon Inc.'}</Text>
-                <Text style={style.text}>{'sadfafds@aecon.com'}</Text>
+                <View style={{width:'100%', alignItems:'center'}}>
 
-                <TextInput
-                    placeholder="Password"
-                    style={style.input}
-                    placeholderTextColor={'#D1D1D1'}
-                    underlineColorAndroid='rgba(0,0,0,0)'
-                    secureTextEntry
-                />
+                    <TextInput
+                        placeholder="Name"
+                        style={style.input}
+                        placeholderTextColor={'#D1D1D1'}
+                        underlineColorAndroid='rgba(0,0,0,0)'
 
-                <TextInput
-                    placeholder="Confirm Password"
-                    style={style.input}
-                    placeholderTextColor={'#D1D1D1'}
-                    underlineColorAndroid='rgba(0,0,0,0)'
-                    secureTextEntry
-                />
-
-            </View>
-
-            <View style={style.footer}>
-
-                <TouchableOpacity
-                    style={{...style.button,marginBottom:10,justifyContent:'center',alignItems:'center'}}
-                    onPress={() => this.props.navigation.navigate('seekerCapability')}
-                >
-                    <Text style={{...style.buttonText,fontSize:20}}>Join Now</Text>
-                    <Text style={{...style.buttonText,fontSize:15}}>Become a Workorbe Member!</Text>
-                </TouchableOpacity>
-
-                <View style={{flexDirection:'row',marginTop:5}}>
-                    <Image
-                        style={{height:140,width:130,zIndex:-1}}
-                        source={require('../image/blue_hexagon_bottom_360.png')}
                     />
 
-                    <View style={{zIndex:10,marginTop:80}}>
-                        <Text style={{color:'#D1D1D1', textAlign:'center'}}> Copyright 2018 Workorbe</Text>
-                        <Text style={{color:'#D1D1D1',textAlign:'center'}}> All right reserved</Text>
-                    </View>
+                    <Text style={style.text}>{'Aecon Inc.'}</Text>
+                    <Text style={style.text}>{'sadfafds@aecon.com'}</Text>
+
+                    <TextInput
+                        placeholder="Password"
+                        style={style.input}
+                        placeholderTextColor={'#D1D1D1'}
+                        underlineColorAndroid='rgba(0,0,0,0)'
+                        secureTextEntry
+                    />
+
+                    <TextInput
+                        placeholder="Confirm Password"
+                        style={style.input}
+                        placeholderTextColor={'#D1D1D1'}
+                        underlineColorAndroid='rgba(0,0,0,0)'
+                        secureTextEntry
+                    />
+
                 </View>
 
-            </View>
+                <View style={style.footer}>
 
-        </KeyboardAwareScrollView>
-    )
-  };
+                    <TouchableOpacity
+                        style={{...style.button,marginBottom:10,justifyContent:'center',alignItems:'center'}}
+                        onPress={() => this.props.navigation.navigate('seekerCapability')}
+                    >
+                        <Text style={{...style.buttonText,fontSize:20}}>Join Now</Text>
+                        <Text style={{...style.buttonText,fontSize:15}}>Become a Workorbe Member!</Text>
+                    </TouchableOpacity>
+
+                    <View style={{flexDirection:'row',marginTop:5}}>
+                        <Image
+                            style={{height:140,width:130,zIndex:-1}}
+                            source={require('../image/blue_hexagon_bottom_360.png')}
+                        />
+
+                        <View style={{zIndex:10,marginTop:80}}>
+                            <Text style={{color:'#D1D1D1', textAlign:'center'}}> Copyright 2018 Workorbe</Text>
+                            <Text style={{color:'#D1D1D1',textAlign:'center'}}> All right reserved</Text>
+                        </View>
+                    </View>
+
+                </View>
+
+            </KeyboardAwareScrollView>
+        )
+    };
 }
 
 

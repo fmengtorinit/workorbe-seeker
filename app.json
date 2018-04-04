@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "expo-1st-project",
+    "name": "Workorbe",
     "description": "This project is really great.",
-    "slug": "expo-1st-project",
+    "slug": "Workorbe",
     "privacy": "public",
     "sdkVersion": "25.0.0",
     "platforms": ["ios", "android"],
@@ -15,7 +15,12 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yourcompany.yourappname"
+    },
+    "android": {
+      "package": "com.yourcompany.yourappname"
     }
+
   }
 }

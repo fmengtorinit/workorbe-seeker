@@ -97,17 +97,16 @@ class SeekerReview extends Component {
         const {name,address,addressLine2,phone,description,uploadUri} = profile;
 
         return (
-            <View style={{width:itemWidth, alignItems:'center',paddingHorizontal:'6%'}}>
+            <View style={{width:itemWidth, alignItems:'center',paddingHorizontal:'6%',marginBottom:30}}>
 
                 {this.renderEditBtn('personalProfile',0)}
 
                 {this.renderImage(uploadUri,'profile')}
 
                 <Text style={{...style.text,fontWeight:'bold',marginVertical:20}}>{name}</Text>
-                <Text style={style.text}>{address}</Text>
-                <Text style={style.text}>{addressLine2}</Text>
-
-                <Text style={{fontSize:20, color: 'black'}}> {description} </Text>
+                {address ? <Text style={style.text}>{address}</Text> : null}
+                {addressLine2 ? <Text style={style.text}>{addressLine2}</Text> : null}
+                {description ? <Text style={{fontSize:20, color: 'black'}}> {description} </Text> : null}
 
             </View>
 
@@ -140,72 +139,86 @@ class SeekerReview extends Component {
             }
         }
 
-        specializationsList.forEach((spec,index) => {
+        if (specializationsList.length > 0) {
 
-            if (index%2 !== 0) {
+            specializationsList.forEach((spec, index) => {
 
-                specList.push(
-                    <View key={index} style={{flexDirection:'row', alignItems:'center',justifyContent:'space-between'}}>
-                        <Text key={specializationsList[index-1]} style={{...style.text,fontWeight:'normal'}}> {specializationsList[index-1]} </Text>
-                        <Text key={spec} style={{...style.text,fontWeight:'normal'}}> {spec} </Text>
-                    </View>
-                );
+                if (index % 2 !== 0) {
 
-            } else if (index === specializationsList.length-1) {
+                    specList.push(
+                        <View key={index}
+                              style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                            <Text key={specializationsList[index - 1]} style={{
+                                ...style.text,
+                                fontWeight: 'normal'
+                            }}> {specializationsList[index - 1]} </Text>
+                            <Text key={spec} style={{...style.text, fontWeight: 'normal'}}> {spec} </Text>
+                        </View>
+                    );
 
-                specList.push(
-                    <View key={index} style={{flexDirection:'row', alignItems:'center',justifyContent:'space-between'}}>
-                        <Text key={spec} style={{...style.text,fontWeight:'normal'}}> {spec} </Text>
-                    </View>
-                );
-            }
-        });
+                } else if (index === specializationsList.length - 1) {
 
-        return specList;
+                    specList.push(
+                        <View key={index}
+                              style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                            <Text key={spec} style={{...style.text, fontWeight: 'normal'}}> {spec} </Text>
+                        </View>
+                    );
+                }
+            });
+
+            return (
+                <View style={{marginBottom: 30}}>
+                    {specList}
+                </View>
+            );
+        }
     };
 
     renderExperience = expList => {
+        if (expList.length > 0) {
 
-        return expList.map(({title, companyName, fromMM, fromYYYY, toMM, toYYYY, description},index) => {
 
-            let from;
-            let to;
+            const exp = expList.map(({title, companyName, fromMM, fromYYYY, toMM, toYYYY, description},index) => {
 
-            if (!fromMM) {
-                from = fromYYYY;
-            } else {
-                from = `${fromMM}/${fromYYYY}`;
-            }
+                if (title || companyName || fromMM || fromYYYY || toMM || toYYYY || description) {
 
-            if (!toMM) {
-                to = toYYYY;
-            } else {
-                to = `${toMM}/${toYYYY}`;
-            }
+                    let from;
+                    let to;
 
-            if (title || companyName || fromMM || fromYYYY || toMM || toYYYY || description) {
+                    if (!fromMM) {
+                        from = fromYYYY;
+                    } else {
+                        from = `${fromMM}/${fromYYYY}`;
+                    }
 
-                return (
-                            <View key={index} style={{alignItems:'flex-start', marginBottom:40}}>
-                                <Text style={{...style.text,fontWeight:'bold',height:25}}>{companyName}</Text>
-                                <Text style={{...style.text,height:25}}>{title}</Text>
-                                <View style={{flexDirection:'row', alignItems:'center'}}>
-                                    <Text style={{...style.text,height:25}}>{from}</Text>
-                                    <Text style={{marginHorizontal:10}}>{to && from ? '-' : ''}</Text>
-                                    <Text style={{...style.text,height:25}}>{to}</Text>
+                    if (!toMM) {
+                        to = toYYYY;
+                    } else {
+                        to = `${toMM}/${toYYYY}`;
+                    }
+
+                    return (
+                                <View key={index} style={{alignItems:'flex-start', marginBottom:40}}>
+                                    {companyName ? <Text style={{...style.text,fontWeight:'bold',height:25}}>{companyName}</Text> : null}
+                                    {title ? <Text style={{...style.text,height:25}}>{title}</Text> : null}
+                                    <View style={{flexDirection:'row', alignItems:'center'}}>
+                                        <Text style={{...style.text,height:25}}>{from}</Text>
+                                        <Text style={{marginHorizontal:10}}>{to && from ? '-' : ''}</Text>
+                                        <Text style={{...style.text,height:25}}>{to}</Text>
+                                    </View>
+                                    {description ? (<Text style={{fontSize:20, color: 'black', marginTop:10}}>{description}</Text>) : null}
                                 </View>
-                                <Text style={{
-                                        fontSize:20,
-                                        color: 'black',
-                                        marginTop:10
-                                    }}
-                                >
-                                    {description}
-                                </Text>
-                            </View>
-                );
-            }
-        });
+                    );
+                }
+            });
+
+            return (
+                <View>
+                    {exp}
+                </View>
+            );
+        }
     };
 
     renderCapability = cap => {
@@ -237,15 +250,14 @@ class SeekerReview extends Component {
                     </View>
 
                     <Text style={{...style.text, alignSelf:'flex-start',fontWeight:'normal',marginBottom:30}}>{'Years of Experience:  ' + (yearsOfExperience ? (yearsOfExperience + ' yrs') : '' )}</Text>
-                    <Text style={{...style.text,fontWeight:'bold',textAlign:'center',marginBottom:30}}> Specializations </Text>
-                    <View style={{marginBottom:30}}>
-                        {this.renderSpecializations(specializations)}
-                    </View>
+                    {Object.keys(specializations).length === 0 && specializations.constructor === Object ? null : <Text style={{...style.text,fontWeight:'bold',textAlign:'center',marginBottom:30}}> Specializations </Text>}
 
-                    <Text style={{...style.text,fontWeight:'bold',textAlign:'center', marginBottom:30}}> Experience </Text>
-                    <View >
-                        {this.renderExperience(experience)}
-                    </View>
+                    {this.renderSpecializations(specializations)}
+
+                    {experience.length > 0 ? <Text style={{...style.text,fontWeight:'bold',textAlign:'center', marginBottom:30}}> Experience </Text> : null }
+
+                    {this.renderExperience(experience)}
+
 
                 </View>
             </View>

@@ -213,7 +213,6 @@ class Media extends Component {
                             <Text style={{color:'#D1D1D1',textAlign:'center'}}> All right reserved</Text>
                         </View>
                     </View>
-
                 </View>
 
             </KeyboardAwareScrollView>

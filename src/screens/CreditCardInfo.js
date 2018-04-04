@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {View, Image, ScrollView, TouchableOpacity, Platform, Dimensions, FlatList, TextInput, Text, Picker,KeyboardAvoidingView} from 'react-native';
+import {View, Image, TouchableOpacity, Dimensions, TextInput, Text} from 'react-native';
 import { Button } from 'react-native-elements';
 import ModalDropdown from 'react-native-modal-dropdown';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import {StatusBar} from 'react-native';
+
 import axios from "axios";
 import * as creditCardAction from "../actions/Onboarding";
 
 const hearderHeight = 60;
+const statusBarHeight = StatusBar.currentHeight;
 
 const {height, width} = Dimensions.get('window');
 
@@ -41,7 +45,6 @@ const style = {
         borderBottomColor:'#D1D1D1',
         marginBottom:35
     },
-
     checkBox: {
         boxSize:30
     },
@@ -50,13 +53,7 @@ const style = {
         borderBottomColor:'#D1D1D1',
         marginBottom:35
     },
-    header:{
-        width:'88%',
-        alignSelf:'center',
-        backgroundColor: 'transparent',
-        height:hearderHeight
-    },
-    cardView:{
+    cardNumberInput:{
         flexDirection:'row',
         width:'88%',
         alignItems:'center',
@@ -64,26 +61,30 @@ const style = {
         borderBottomColor:'#D1D1D1',
         marginBottom:35
     },
+    header:{
+        width:'100%',
+        paddingHorizontal:'6%',
+        alignSelf:'center',
+        backgroundColor: 'transparent',
+        height:hearderHeight
+    },
     imageTopRightStyle:{
         position:'absolute',
-        top:0,
+        top:statusBarHeight,
         right:0,
         zIndex:-10,
         height:130,
         width:95
     },
     footer: {
-        position:'absolute',
-        bottom:20,
         width:'100%'
     }
 };
 
-
 class CreditCardInfo extends Component {
 
     static navigationOptions = ( { navigation } ) => ({
-
+        headerTransparent:true,
         headerLeft: (
 
             <TouchableOpacity onPress={()=> navigation.navigate('seekerCapability')}>
@@ -94,6 +95,7 @@ class CreditCardInfo extends Component {
             </TouchableOpacity>
 
         ),
+
         headerStyle:style.header
     });
 
@@ -207,27 +209,25 @@ class CreditCardInfo extends Component {
 
     render() {
 
-        console.log('countryList: ',this.state.countryList);
-
         return (
 
-            <KeyboardAvoidingView
-                style={{
-                    position:'absolute',
-                    top:-hearderHeight,
-                    backgroundColor:"white",
+            <KeyboardAwareScrollView
+                contentContainerStyle={{
+                    backgroundColor: 'white',
                     width: '100%',
                     alignItems:'center',
-                    height:height
+                    height:'100%',
+                    justifyContent:'space-between',
+                    zIndex:10
                 }}
-                enableOnAndroid={true}
+                enableOnAndroid
                 extraHeight={500}
             >
 
                 <Image source={{uri: 'https://torinit.com/assets/workorbe/Blue-Hexagon-Top.png'}} style={style.imageTopRightStyle}/>
 
                 <Image
-                    style={{width:'85%',height:46, marginBottom:50, marginTop:hearderHeight+5}}
+                    style={{width:'85%',height:46, marginBottom:50, marginTop:hearderHeight+25}}
                     source={require('./image/new-logo.png')}
                 />
 
@@ -242,7 +242,7 @@ class CreditCardInfo extends Component {
                         onChangeText={text => this.onNameOnCardChange(text)}
                     />
 
-                    <View style={style.cardView}>
+                    <View style={style.cardNumberInput}>
                         <Image
                             style={{width:20, height:15, marginBottom:3, marginRight:6}}
                             source={require('./image/creditcard_icon.jpg')}
@@ -359,9 +359,7 @@ class CreditCardInfo extends Component {
                                     source={require('./image/dropdown_pg5.jpg')}
                                 />
                             </View>
-
                         </ModalDropdown>
-
                     </View>
 
                     <View style={{flexDirection:'row',width:'88%',justifyContent:'space-between'}}>
@@ -409,7 +407,7 @@ class CreditCardInfo extends Component {
                     </View>
 
                 </View>
-            </KeyboardAvoidingView>
+            </KeyboardAwareScrollView>
 
         );
     }
